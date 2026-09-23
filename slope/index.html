@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="../_astral/boot.js"></script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Slope</title>
+<link rel="icon" href="favicon.png"/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+  html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background: #11131d;
+  }
+  .webgl-content,
+  #gameContainer {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    inset: 0;
+    background: #231f20;
+  }
+</style>
+  <link rel="stylesheet" href="../_astral/fill.css">
+  <script src="../_astral/minres.js" data-min-w="1100" data-min-h="720"></script>
+</head>
+<body>
+
+<script src="UnityProgress.js"></script>
+<script src="unityloader41.js"></script>
+
+<div class="webgl-content">
+  <div id="gameContainer"></div>
+</div>
+
+<script>
+var gameInstance = UnityLoader.instantiate("gameContainer", "slope.json", {
+  onProgress: UnityProgress,
+  Module: {
+    onRuntimeInitialized: function() {
+      UnityProgress(gameInstance, "complete");
+      try { document.querySelector("#gameContainer canvas")?.focus(); } catch (_) {}
+    }
+  }
+});
+</script>
+</body>
+</html>

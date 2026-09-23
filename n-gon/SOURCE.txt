@@ -1,0 +1,3 @@
+n-gon source: https://github.com/landgreen/n-gon.git
+License: GPL-3.0, see LICENSE in this directory.
+Installed by setup_ngon.sh on 2026-05-03T02:19:07Z.

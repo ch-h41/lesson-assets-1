@@ -1,0 +1,8 @@
+/* fill — for Unity WebGL builds that lock their canvas to the startup
+ * size. Forcing the canvas to the viewport makes Unity resize its backbuffer
+ * to match on every window resize (sharp, no scaling). */
+html, body { margin: 0 !important; padding: 0 !important; width: 100%; height: 100%; overflow: hidden !important; }
+#gameContainer { width: 100vw !important; height: 100vh !important; margin: 0 !important; }
+#gameContainer > canvas, body > canvas#canvas, body > canvas.emscripten {
+  width: 100vw !important; height: 100vh !important; display: block; position: static !important;
+}
