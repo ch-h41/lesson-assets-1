@@ -10,7 +10,7 @@
  *     (listed in data-parts, relative to the repo root); requests for the
  *     original are answered with the pieces joined back together
  *   - workers must load from the page's own origin, so they stay on githack
- *   - images are requested with CORS, so WebGL can still draw them
+ *   - the game's images are requested with CORS, so WebGL can still draw them
  * Games' own service workers are turned off; they'd cache the wrong origin.
  */
 (function () {
@@ -104,7 +104,7 @@
   Object.defineProperty(HTMLImageElement.prototype, "src", {
     configurable: true, enumerable: true, get: src.get,
     set: function (v) {
-      if (this.crossOrigin == null && !/^(data|blob):/.test(v)) this.crossOrigin = "anonymous";
+      if (this.crossOrigin == null && (abs(v) || "").indexOf(CDN_ROOT) === 0) this.crossOrigin = "anonymous";
       src.set.call(this, v);
     },
   });
